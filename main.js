@@ -14,10 +14,8 @@ const commandFiles = fs.readdirSync('./').filter(file => file.endsWith('.js'))
 for(const file of commandFiles){
     const command = require('./commands/aide');
     const commad = require('./commands/commit');
-    const commade = require('./commands/image');
     client.commands.set(command.name, command);
     client.commands.set(commad.name, commad);
-    client.commands.set(commad.name, commade);
 }
 
 
@@ -51,9 +49,6 @@ client.on('message', message =>{
             break;
         case 'commit':
             client.commands.get('commit').execute(message,args);
-            break;
-        case 'image':
-            client.commands.get('image').execute(message,args);
             break;
         default:
             message.channel.send('https://google.com/search?q='+command);
